@@ -1,7 +1,5 @@
-import time
 import requests
 import pyotp
-import base64
 
 
 class Bitskins:
