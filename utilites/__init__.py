@@ -29,7 +29,7 @@ def has_number(string):
     return any(char.isdigit() for char in string)
 
 
-def unix_to_time(unix, ):
+def unix_to_time(unix):
     unix_timestamp = float(unix)
     local_timezone = tzlocal.get_localzone()  # get pytz timezone
     local_time = datetime.datetime.fromtimestamp(unix_timestamp, local_timezone)
@@ -60,6 +60,5 @@ def current_time():
 def subtract_time(a, b):
     b = b.replace(tzinfo=None)
     return b - a
-
 
 

@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6e781fe-a98a-4ee4-855e-326435c4a1e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utilites/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilites/discord.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilites/weapon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitskins.py" beforeDir="false" afterPath="$PROJECT_DIR$/bitskins.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilites/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilites/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilites/weapon.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilites/weapon.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SkinDumper" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -78,56 +77,53 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="503" y="319" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1598895860684">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="503" y="319" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1504.963@0.0.1504.963" timestamp="1598895860684" />
     <state x="533" y="238" key="FileChooserDialogImpl" timestamp="1598722598920">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="533" y="238" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1598722598920" />
-    <state width="1505" height="326" key="GridCell.Tab.0.bottom" timestamp="1598825592238">
+    <state width="1505" height="186" key="GridCell.Tab.0.bottom" timestamp="1598909787022">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.0.center" timestamp="1598825592238">
+    <state width="1505" height="186" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1598909787022" />
+    <state width="1505" height="186" key="GridCell.Tab.0.center" timestamp="1598909787022">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.0.left" timestamp="1598825592238">
+    <state width="1505" height="186" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1598909787022" />
+    <state width="1505" height="186" key="GridCell.Tab.0.left" timestamp="1598909787022">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.0.right" timestamp="1598825592238">
+    <state width="1505" height="186" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1598909787022" />
+    <state width="1505" height="186" key="GridCell.Tab.0.right" timestamp="1598909787022">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.1.bottom" timestamp="1598825592238">
+    <state width="1505" height="186" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1598909787022" />
+    <state width="1505" height="326" key="GridCell.Tab.1.bottom" timestamp="1598832544741">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.1.bottom/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.1.center" timestamp="1598825592238">
+    <state width="1505" height="326" key="GridCell.Tab.1.bottom/0.0.1504.963@0.0.1504.963" timestamp="1598832544741" />
+    <state width="1505" height="326" key="GridCell.Tab.1.center" timestamp="1598832544741">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.1.center/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.1.left" timestamp="1598825592238">
+    <state width="1505" height="326" key="GridCell.Tab.1.center/0.0.1504.963@0.0.1504.963" timestamp="1598832544741" />
+    <state width="1505" height="326" key="GridCell.Tab.1.left" timestamp="1598832544741">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.1.left/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
-    <state width="1505" height="326" key="GridCell.Tab.1.right" timestamp="1598825592238">
+    <state width="1505" height="326" key="GridCell.Tab.1.left/0.0.1504.963@0.0.1504.963" timestamp="1598832544741" />
+    <state width="1505" height="326" key="GridCell.Tab.1.right" timestamp="1598832544741">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
-    <state width="1505" height="326" key="GridCell.Tab.1.right/0.0.1504.963@0.0.1504.963" timestamp="1598825592238" />
+    <state width="1505" height="326" key="GridCell.Tab.1.right/0.0.1504.963@0.0.1504.963" timestamp="1598832544741" />
+    <state x="405" y="11" key="SettingsEditor" timestamp="1598895944005">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="405" y="11" key="SettingsEditor/0.0.1504.963@0.0.1504.963" timestamp="1598895944005" />
     <state x="448" y="213" width="609" height="536" key="find.popup" timestamp="1598803490258">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="448" y="213" width="609" height="536" key="find.popup/0.0.1504.963@0.0.1504.963" timestamp="1598803490258" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/utilites/weapon.py</url>
-          <line>89</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

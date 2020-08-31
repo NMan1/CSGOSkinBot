@@ -1,15 +1,18 @@
 import difflib
 import random
 import json
+import warnings
 
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 from utilites import has_number, contains_sub
 
 weapons = []
-qualitys = ["Factory New", "Battle-Scarred", "Well-Worn", "Field-Tested", "Minimal Wear"]
+qualitys = ["Factory New", "Battle-Scarred", "Well-Worn", "Field-Tested", "Minimal Wear", "Random"]
 skin_json = None
 skin_urls_json = None
 
-weapon_names = {"Pistols": {"seven": "Five-SeveN", "tec": "Tec-9", "CZ75": "CZ75-Auto", "glock": "Glock-18"},
+weapon_names = {"Pistols": {"seven": "Five-SeveN", "tec": "Tec-9", "CZ75": "CZ75-Auto", "glock": "Glock-18", "usp": "USP-S"},
                 "Shotguns": {"nova": "Nova", "mag-7": "MAG-7", "xm": "XM1014"},
                 "Knives": {"bayonet": "★ M9 Bayonet", "shadow": "★ Shadow Daggers", "karambit": "★ Karambit"},
                 "Heavy": {"negev": "Negev"}
@@ -58,26 +61,6 @@ def clean_weapon(weapon):
         if contains_sub(weapon, "knife"):
             weapon = "★ " + weapon
     return weapon
-    #
-    # if contains_sub(weapon, "knife") or contains_sub(weapon, "karambit") or contains_sub(weapon, "bayonet") or contains_sub(weapon, "shadow"):
-    #     if contains_sub(weapon, "bayonent"):
-    #         weapon = "M9 Bayonet"
-    #     weapon = "★ " + weapon
-    # else:
-    #     if contains_sub(weapon, "seven"):
-    #         weapon = "Five-SeveN"
-    #     elif contains_sub(weapon, "negev"):
-    #         weapon = "Negev"
-    #     elif contains_sub(weapon, "nova"):
-    #         weapon = "Nova"
-    #     elif contains_sub(weapon, "tec"):
-    #         weapon = "Tec-9"
-    #     elif contains_sub(weapon, "CZ75"):
-    #         weapon = "CZ75-Auto"
-    #     elif contains_sub(weapon, "m9 bay"):
-    #         weapon = "★ M9 Bayonet"
-    #     elif contains_sub(weapon, "mag-7"):
-    #         weapon = "MAG-7"
 
 
 def make_weapon_choice(weapon, args):
@@ -86,49 +69,42 @@ def make_weapon_choice(weapon, args):
     else:
         weapon = difflib.get_close_matches(weapon.upper(), weapons, cutoff=.1)[0]
 
-    quality = "None"
-    for quality_ in qualitys:
-        if contains_sub(args, quality_):
-            quality = quality_
-            args.replace(f" {quality_}", "")
+    skin_key = []
+    for skin in skin_json[weapon]:
+        skin_key.append(skin)
 
-    skin = args
-    if args.lower() == "random":
-        skin = random.choice(list(skin_json[weapon].keys()))
-    else:
-        skin = difflib.get_close_matches(skin.title(), skin_json[weapon], cutoff=.1)[0]
-    return weapon, skin, quality
+    skin_key.append("Random")
+    split = args.rsplit(" ")
+
+    skin = ["", 0]
+    for word in split:
+        extracted_skin = process.extract(split[0], skin_key, limit=2)
+        if extracted_skin[0][1] > skin[1]:
+            skin = extracted_skin[0]
+            split.remove(word)
+
+    for word in split:
+        if contains_sub(skin[0], word) and not contains_sub(skin[0], "random"):
+            split.remove(word)
+
+    quality = ["", 0]
+    for word in split:
+        extracted_quality = process.extract(split[0], qualitys, limit=2)
+        if extracted_quality[0][1] > quality[1]:
+            quality = extracted_quality[0]
+            split.remove(word)
+
+    if quality[1] == 0:
+        quality = [qualitys[0], 100]
+    elif quality[0] == "Random":
+        quality = [random.choice(qualitys[0:len(qualitys)-1]), 100]
+    return weapon, skin[0], quality[0]
 
 
-
-
-
-
-
-
-
-
-    # debug = False
-    # if contains_sub(args, "DEBUG"):
-    #     debug = True
-    #     arg = args.replace("DEBUG", "")
-    #
-    # quality = None
-    # for qual in qualitys:
-    #     search_query = f"{weapon} | {skin} ({qual})"
-    #     if debug:
-    #         await ctx.send(f"Search query {search_query}")
-    #
-    #     request = bitskins.get_request("get_price_data_for_items_on_sale", {"names": search_query})
-    #     data = request['data']['items'][0]
-    #     if data['total_items'] == 0:
-    #         await ctx.send(f"""```css\n[Failed to find skin for "{search_query}". Switching quality...]```""")
-    #         continue
-    #     else:
-    #         quality = qual
-    #         break
-    #
-    # if quality is None:
-    #     await ctx.send(f"""```css\n[Failed to find skin for each quality". Likely there are no listings for this item on BitSkins.```""")
-    #     return
-    #
+async def get_price_data(bitskins, ctx, search_query):
+    request = bitskins.get_request("get_price_data_for_items_on_sale", {"names": search_query})
+    data = request['data']['items'][0]
+    if data['total_items'] == 0:
+        await ctx.send(f"""```css\n[Failed to find skin for "{search_query}". Likely there is no item listing for this quality.```""")
+        return None
+    return data
