@@ -9,6 +9,7 @@ from utilites import has_number, contains_sub
 
 weapons = []
 qualitys = ["Factory New", "Battle-Scarred", "Well-Worn", "Field-Tested", "Minimal Wear", "Random"]
+raritys = [("Consumer Grade", 0xafafaf), ("Industrial Grade", 0x6496e1), ("Mil-Spec Grade", 0x4b69cd), ("Restricted", 0x8847ff), ("Classified", 0xd32ce6), ("Covert", 0xeb4b4b)]
 skin_json = None
 skin_urls_json = None
 
@@ -21,10 +22,10 @@ weapon_names = {"Pistols": {"seven": "Five-SeveN", "tec": "Tec-9", "CZ75": "CZ75
 
 def format_skins():
     global skin_json, skin_urls_json
-    with open("skins.json", encoding="utf8") as file:
+    with open("bot/skins/skins.json", encoding="utf8") as file:
         skin_json = json.load(file)
 
-    with open("skins_urls.json", encoding="utf8") as file:
+    with open("bot/skins/skins_urls.json", encoding="utf8") as file:
         skin_urls_json = json.load(file)
 
     for weapon in skin_json:
@@ -58,8 +59,10 @@ def clean_weapon(weapon):
         for find_name in weapon_names[weapon_type]:
             if contains_sub(weapon, find_name):
                 weapon = weapon_names[weapon_type][find_name]
-        if contains_sub(weapon, "knife"):
-            weapon = "★ " + weapon
+
+    if contains_sub(weapon, "knife"):
+        weapon = "★ " + weapon
+
     return weapon
 
 
@@ -98,6 +101,10 @@ def make_weapon_choice(weapon, args):
         quality = [qualitys[0], 100]
     elif quality[0] == "Random":
         quality = [random.choice(qualitys[0:len(qualitys)-1]), 100]
+
+    if skin[0] == "Random":
+        skin = [random.choice(skin_key[0:len(skin_key)-1]), 100]
+
     return weapon, skin[0], quality[0]
 
 

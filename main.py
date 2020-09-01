@@ -1,11 +1,9 @@
-import difflib
 import discord
-import random
 
-from bitskins import Bitskins
+from utilites.bitskins import Bitskins
 from utilites import subtract_time, current_time, from_timestamp, unix_to_time, make_tiny
-from utilites.discord import help_embed, client, change_status
-from utilites.weapon import make_weapon_choice, clean_weapon, get_skin_image, format_skins, get_price_data
+from bot.discord import help_embed, client, change_status, skin_embed
+from utilites.weapon import make_weapon_choice, clean_weapon, format_skins, get_price_data, raritys
 
 bitskins = None
 bitskins_api_key = 'e49cf7e4-f72f-43ea-986e-714ab8cec13b'
@@ -15,6 +13,11 @@ bitskins_secret = '5SSNCGMUFG3M7SXJ'
 @client.command(pass_context=True)
 async def help(ctx):
     await ctx.send(embed=help_embed())
+
+
+@client.command(pass_context=True)
+async def inv(ctx):
+    pass
 
 
 @client.command(pass_context=True)
@@ -56,17 +59,12 @@ async def price(ctx, weapon, *, arg=None):
     else:
         withdrable_text = f"""```css\nInstantly Withdrawable!```"""
 
-    embed = discord.Embed(title=f"{weapon} | {skin} {quality}", colour=0xcaab05)
-    embed.set_thumbnail(url=skin_img)
-    embed.add_field(name="Withdrawable In", value=withdrable_text, inline=False)
-    embed.add_field(name="Updated At", value=f"{unix_to_time(data['updated_at'])}", inline=True)
-    embed.add_field(name="Wear", value=cheapest_listing['float_value'], inline=True)
-    embed.add_field(name=chr(173), value=chr(173))
-    embed.add_field(name="Lowest Price", value=f"${data['lowest_price']} {discount}", inline=True)
-    embed.add_field(name="Highest Price", value=f"${data['highest_price']}", inline=True)
-    embed.add_field(name=chr(173), value=chr(173))
-    embed.add_field(name="Inspect In Game", value=f"[Click Here]({make_tiny(cheapest_listing['inspect_link'])})", inline=True)
-    embed.add_field(name="Buy On BitSkins", value=f"[Click Here](https://bitskins.com/view_item?app_id=730&item_id={cheapest_listing['item_id']})", inline=True)
+    color = 0xcaab05
+    for rarity in raritys:
+        if rarity[0] == cheapest_listing['tags']['rarity']:
+            color = rarity[1]
+
+    embed = skin_embed(weapon, skin, quality, color, skin_img, withdrable_text, data, cheapest_listing, discount)
 
     if data['recent_sales_info']:
         embed.add_field(name=f"Average Price (over {int(float(data['recent_sales_info']['hours']))} hours)", value=f"${data['recent_sales_info']['average_price']}", inline=False)
