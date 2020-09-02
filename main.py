@@ -1,9 +1,8 @@
-import discord
-
 from utilites.bitskins import Bitskins
 from utilites import subtract_time, current_time, from_timestamp, unix_to_time, make_tiny
 from bot.discord import help_embed, client, change_status, skin_embed
 from utilites.weapon import make_weapon_choice, clean_weapon, format_skins, get_price_data, raritys
+
 
 bitskins = None
 bitskins_api_key = 'e49cf7e4-f72f-43ea-986e-714ab8cec13b'
@@ -45,7 +44,7 @@ async def price(ctx, weapon, *, arg=None):
     withdrawable_at = subtract_time(current_time(), from_timestamp(float(cheapest_listing['withdrawable_at'])))
     discount = int(100 * (float(cheapest_listing['suggested_price']) - float(cheapest_listing['price'])) / float(cheapest_listing['suggested_price']))
 
-    discount = f"(%{discount} Off)" if 0 < discount <= 100  else ""
+    discount = f"(%{discount} Off)" if 0 < discount <= 100 else ""
 
     if withdrawable_at.days >= 0:
         time = f"{withdrawable_at.days} Days, {withdrawable_at.seconds // 3600} hours"

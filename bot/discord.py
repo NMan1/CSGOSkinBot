@@ -8,17 +8,19 @@ client = commands.Bot(command_prefix="s!")
 client.remove_command("help")
 statuses = ["Trading skins", "Buying skins", "Making a loudout"]
 commands = [["price", "<weapon>  <skin> | Note, both parameters can be specified as 'random'"]]
+last_skin_embed = discord.Embed()
 
 
 @tasks.loop(seconds=60)
 async def change_status():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=random.choice(statuses)))
+    await client.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.playing, name=random.choice(statuses)))
 
 
 def help_embed():
     total = len(commands)
     embed = discord.Embed(title="Commands List", description=f"{total} Total\n", color=0xff0000)
-    embed.set_author(name="CS Skin Bot", icon_url="https://www.nicepng.com/png/detail/346-3461600_csgo-case-cs-go-icon.png")
+    embed.set_author(name="CS Skin Bot",icon_url="https://www.nicepng.com/png/detail/346-3461600_csgo-case-cs-go-icon.png")
     embed.set_thumbnail(url="https://www.freepngimg.com/thumb/orange/89751-silhouette-kliktech-global-offensive-source-counterstrike-sky.png")
     for command in commands:
         embed.add_field(name=command[0], value=command[1], inline=True)
@@ -27,7 +29,8 @@ def help_embed():
 
 
 def skin_embed(weapon, skin, quality, color, skin_img, withdrable_text, data, cheapest_listing, discount):
-    embed = discord.Embed(title=f"{weapon} | {skin} {quality}", description="s!add to add to virtual inventory", colour=color)
+    embed = discord.Embed(title=f"{weapon} | {skin} {quality}", description="s!add to add to virtual inventory",
+                          colour=color)
     embed.set_thumbnail(url=skin_img)
     embed.add_field(name="Withdrawable In", value=withdrable_text, inline=False)
     embed.add_field(name="Updated At", value=f"{unix_to_time(data['updated_at'])}", inline=True)
