@@ -5,8 +5,8 @@ from utilites.weapon import make_weapon_choice, clean_weapon, format_skins, get_
 
 
 bitskins = None
-bitskins_api_key = 'e49cf7e4-f72f-43ea-986e-714ab8cec13b'
-bitskins_secret = '5SSNCGMUFG3M7SXJ'
+bitskins_api_key = 'f,ffefefef'
+bitskins_secret = 'wkdwfwkfhwf'
 
 
 @client.command(pass_context=True)
