@@ -11,6 +11,6 @@ Uses bitskin API to retrive skin info.
   
 2. Virtual inventory system (not implemented yet) 
 
-# Pictures
+# Pictures (note that the color of the embed changes depending on the rarity of the weapon but these pics are old and didnt have that featured yet)
 <img src="https://i.gyazo.com/b707ab37e04b4c1376a02ba816c7fdd7.png"/>
 <img src="https://i.gyazo.com/2b08ed59644089e71cea858c140975c9.png"/>
