@@ -4,10 +4,10 @@
 Uses bitskin API to retrive skin info.
 
 # Features 
-1. Get information on any skin s!skin <weapon> <skin> <quality>
-  - Uses a python algorithm to dynamically dtermine whatever the users inputed into the highest matched Weapon, Skin and Quality
-  - You can put random for each argument 
-  - Returns embed with lowest priced listing, link to view in game, wear, highest price, when is it withdrawable, average price, link to buy on bitskins
+1. Get information on any skin s!skin (weapon) (skin) (quality)
+    - Uses a python algorithm to dynamically dtermine whatever the users inputed into the highest matched Weapon, Skin and Quality
+    - You can put random for each argument 
+    - Returns embed with lowest priced listing, link to view in game, wear, highest price, when is it withdrawable, average price, link to buy on bitskins
   
 2. Virtual inventory system (not implemented yet) 
 
